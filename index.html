@@ -3,39 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Brayan Melvin Iriarte Peralta | Portafolio Contable & Automatización Financiera</title>
+  <title>Brayan Melvin Iriarte Peralta | Consultor Contable & Financiero</title>
   
-  <!-- Fuentes e Iconos -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
     :root {
-      --bg-dark: #050811;
-      --card-bg: rgba(13, 19, 36, 0.75);
-      --card-border: rgba(59, 130, 246, 0.15);
-      --card-hover: rgba(59, 130, 246, 0.35);
-      --accent: #3b82f6;
+      --bg: #070a13;
+      --card-bg: rgba(15, 23, 42, 0.75);
+      --card-border: rgba(59, 130, 246, 0.18);
+      --accent-blue: #2563eb;
       --accent-cyan: #06b6d4;
       --emerald: #10b981;
-      --text: #f1f5f9;
+      --text: #f8fafc;
       --text-muted: #94a3b8;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Fondo dinámico con partículas interactivas */
-    #canvas-bg {
+    #particles-canvas {
       position: fixed;
       top: 0;
       left: 0;
@@ -46,41 +43,31 @@
     }
 
     .container {
-      max-width: 1050px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
 
-    /* Navegación Glassmorphism */
+    /* Navbar */
     nav {
-      position: sticky;
-      top: 1rem;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(10, 15, 30, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 9999px;
-      padding: 0.75rem 1.75rem;
-      margin: 1.5rem auto 3.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 950px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      padding: 1.25rem 2rem;
+      margin: 1.5rem auto 3rem;
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border);
+      border-radius: 9999px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     }
 
-    .nav-brand {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
+    .brand {
+      font-weight: 800;
       font-size: 1.1rem;
       letter-spacing: -0.02em;
     }
-
-    .nav-brand span {
-      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .brand span { color: var(--accent-cyan); }
 
     .badge-status {
       display: inline-flex;
@@ -89,13 +76,13 @@
       background: rgba(16, 185, 129, 0.1);
       color: var(--emerald);
       border: 1px solid rgba(16, 185, 129, 0.25);
-      padding: 0.35rem 0.85rem;
+      padding: 0.3rem 0.85rem;
       border-radius: 9999px;
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 600;
     }
 
-    .status-pulse {
+    .pulse-dot {
       width: 8px;
       height: 8px;
       background: var(--emerald);
@@ -103,43 +90,38 @@
       box-shadow: 0 0 10px var(--emerald);
       animation: pulse 2s infinite;
     }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(1.3); }
-    }
-
-    /* Hero Section */
+    /* Hero */
     .hero {
-      padding: 2rem 0 4rem;
       text-align: center;
+      padding: 2rem 0 3.5rem;
     }
 
-    .hero-eyebrow {
+    .hero-badge {
       display: inline-block;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
       font-size: 0.8rem;
       font-weight: 700;
+      letter-spacing: 0.08em;
       color: var(--accent-cyan);
-      margin-bottom: 1rem;
-      padding: 0.25rem 0.75rem;
       background: rgba(6, 182, 212, 0.1);
-      border-radius: 6px;
-      border: 1px solid rgba(6, 182, 212, 0.2);
-    }
-
-    .hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 5vw, 3.8rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      padding: 0.3rem 0.9rem;
+      border-radius: 9999px;
       margin-bottom: 1.25rem;
     }
 
-    .hero h1 .gradient-text {
-      background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 100%);
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -148,7 +130,7 @@
       max-width: 760px;
       margin: 0 auto 2rem;
       color: var(--text-muted);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
     .hero-actions {
@@ -162,26 +144,22 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.7rem 1.4rem;
+      padding: 0.65rem 1.3rem;
       border-radius: 10px;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease;
       cursor: pointer;
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #1d4ed8);
+      background: linear-gradient(135deg, var(--accent-blue), #1d4ed8);
       color: #fff;
-      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.35);
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
       border: none;
     }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 25px rgba(59, 130, 246, 0.5);
-    }
+    .btn-primary:hover { transform: translateY(-2px); }
 
     .btn-glass {
       background: rgba(255, 255, 255, 0.05);
@@ -189,270 +167,170 @@
       border: 1px solid rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(10px);
     }
+    .btn-glass:hover { border-color: var(--accent-cyan); transform: translateY(-2px); }
 
-    .btn-glass:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    /* Tarjetas de Métricas */
-    .metrics-grid {
+    /* Métricas */
+    .metrics {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.25rem;
-      margin-bottom: 4.5rem;
+      gap: 1.2rem;
+      margin-bottom: 4rem;
     }
 
     .metric-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
+      border-radius: 14px;
       padding: 1.5rem;
       text-align: center;
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+      transition: border-color 0.2s;
     }
-
-    .metric-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-
-    .metric-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--accent-cyan);
-      margin-bottom: 0.25rem;
-    }
-
-    .metric-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+    .metric-card:hover { border-color: var(--accent-cyan); }
+    .metric-num { font-size: 2rem; font-weight: 800; color: var(--accent-cyan); }
+    .metric-label { font-size: 0.85rem; color: var(--text-muted); margin-top: 0.25rem; }
 
     /* Consola Interactiva */
-    .terminal-section {
-      background: #02040a;
+    .interactive-panel {
+      background: #030712;
       border: 1px solid var(--card-border);
-      border-radius: 18px;
-      overflow: hidden;
-      margin-bottom: 5rem;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 4rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
     }
 
-    .terminal-topbar {
-      background: #0a0e1c;
-      padding: 0.85rem 1.25rem;
+    .panel-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.75rem;
     }
 
-    .terminal-tabs {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .term-btn {
-      background: transparent;
+    .tab-group { display: flex; gap: 0.5rem; }
+    .tab-btn {
+      background: rgba(255, 255, 255, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.1);
       color: var(--text-muted);
-      padding: 0.35rem 0.85rem;
+      padding: 0.35rem 0.8rem;
       border-radius: 6px;
       font-size: 0.8rem;
-      font-family: 'JetBrains Mono', monospace;
       cursor: pointer;
+      font-family: 'JetBrains Mono', monospace;
       transition: all 0.2s;
     }
-
-    .term-btn.active {
-      background: var(--accent);
+    .tab-btn.active {
+      background: var(--accent-blue);
       color: #fff;
-      border-color: var(--accent);
+      border-color: var(--accent-blue);
     }
 
-    .terminal-body {
-      padding: 1.5rem;
+    .console-box {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       color: #38bdf8;
-      min-height: 180px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 1.25rem;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
       white-space: pre-wrap;
       line-height: 1.6;
     }
 
-    /* Timeline / Experiencia */
-    .section-header {
+    /* Experiencia y Secciones */
+    section { margin-bottom: 4rem; }
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 2rem;
     }
 
-    .section-header h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    .timeline {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      margin-bottom: 5rem;
-    }
-
-    .timeline-card {
+    .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 1.75rem;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(8px);
+      transition: transform 0.2s, border-color 0.2s;
     }
+    .card:hover { border-color: rgba(59, 130, 246, 0.4); transform: translateY(-2px); }
 
-    .timeline-card:hover {
-      border-color: var(--card-hover);
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.08);
-    }
-
-    .timeline-header {
+    .card-head {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
       flex-wrap: wrap;
       margin-bottom: 0.5rem;
     }
+    .card-title { font-size: 1.05rem; font-weight: 700; }
+    .card-subtitle { color: var(--accent-cyan); font-size: 0.92rem; font-weight: 500; }
+    .card-date { color: var(--text-muted); font-size: 0.82rem; }
 
-    .role-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .company-name {
-      color: var(--accent-cyan);
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .period-badge {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      background: rgba(255, 255, 255, 0.04);
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .timeline-bullets {
-      list-style-type: none;
-      margin-top: 0.85rem;
-    }
-
-    .timeline-bullets li {
+    ul.card-list { list-style: none; margin-top: 0.75rem; }
+    ul.card-list li {
       position: relative;
-      padding-left: 1.3rem;
+      padding-left: 1.25rem;
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       margin-bottom: 0.4rem;
     }
-
-    .timeline-bullets li::before {
+    ul.card-list li::before {
       content: "▹";
       position: absolute;
       left: 0;
-      color: var(--accent);
-    }
-
-    /* Categorías de Habilidades */
-    .skills-filter {
-      display: flex;
-      gap: 0.75rem;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
-
-    .filter-pill {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .filter-pill.active, .filter-pill:hover {
-      background: rgba(59, 130, 246, 0.15);
-      border-color: var(--accent);
-      color: #fff;
+      color: var(--accent-cyan);
     }
 
     .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 0.75rem;
-      margin-bottom: 5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
     }
-
-    .skill-box {
-      background: var(--card-bg);
+    .skill-chip {
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .skill-box:hover {
-      border-color: var(--accent-cyan);
-      transform: translateY(-2px);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
     }
 
     footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 2.5rem 0;
       text-align: center;
-      font-size: 0.85rem;
+      padding: 3rem 0;
       color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
   </style>
 </head>
 <body>
 
-  <!-- Fondo interactivo con JavaScript Canvas -->
-  <canvas id="canvas-bg"></canvas>
+  <canvas id="particles-canvas"></canvas>
 
   <div class="container">
-    
-    <!-- Navbar -->
     <nav>
-      <div class="nav-brand">brayan<span>iriarte.dev</span></div>
+      <div class="brand">brayan<span>iriarte.io</span></div>
       <div class="badge-status">
-        <span class="status-pulse"></span>
-        Disponible para Proyectos / Finanzas
+        <span class="pulse-dot"></span>
+        Disponible para Oportunidades
       </div>
     </nav>
 
-    <!-- Hero -->
     <header class="hero">
-      <div class="hero-eyebrow">UNMSM • Ciencias Contables & Automatización</div>
+      <div class="hero-badge">UNMSM • Ciencias Contables (Tercio Superior)</div>
       <h1>
-        Optimizando Procesos Financieros con <br>
-        <span class="gradient-text">Precisión Contable y Código.</span>
+        Información Financiera Precisa para <br>
+        <span>Decisiones de Alto Valor.</span>
       </h1>
       <p>
-        Asistente Contable enfocado en normativa <strong>PCGE / NIIF</strong>, cálculo de <strong>NIIF 16</strong> y desarrollo de algoritmos de automatización en <strong>Python y VBA</strong>. Perteneciente al <strong>Tercio Superior</strong> de la Universidad Nacional Mayor de San Marcos.
+        Asistente Contable enfocado en normativa <strong>PCGE / NIIF</strong>, cálculo de <strong>NIIF 16</strong>, elaboración de papeles de trabajo y análisis de estados financieros. Egresado de la especialidad de <strong>Presupuesto y Finanzas</strong> de la Universidad Nacional Mayor de San Marcos.
       </p>
       <div class="hero-actions">
         <a href="mailto:brayan.iriartep@gmail.com" class="btn btn-primary">
@@ -467,176 +345,159 @@
       </div>
     </header>
 
-    <!-- Métricas Clave -->
-    <div class="metrics-grid">
-      <div class="metric-card">
-        <div class="metric-num">-40%</div>
-        <div class="metric-desc">Tiempo de procesamiento en planillas mediante Python</div>
-      </div>
+    <div class="metrics">
       <div class="metric-card">
         <div class="metric-num">Top 30</div>
-        <div class="metric-desc">Orden de Mérito y Tercio Superior (UNMSM)</div>
-      </div>
-      <div class="metric-card">
-        <div class="metric-num">+3,000</div>
-        <div class="metric-desc">Expedientes digitalizados e indexados</div>
+        <div class="metric-label">Orden de Mérito y Tercio Superior UNMSM</div>
       </div>
       <div class="metric-card">
         <div class="metric-num">0%</div>
-        <div class="metric-desc">Reprocesos en consolidación y cálculo NIIF 16</div>
+        <div class="metric-label">Reprocesos en conciliación NIIF 16</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">+200</div>
+        <div class="metric-label">Asientos mensuales auditados bajo PCGE</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-num">120 hrs</div>
+        <div class="metric-label">Voluntariado Educativo CERSEU UNMSM</div>
       </div>
     </div>
 
-    <!-- Terminal Interactiva de Simulación -->
-    <section>
-      <div class="section-header">
-        <i data-lucide="terminal" style="color: var(--accent);"></i>
-        <h2>Simulador de Scripts Financieros (Python Logic)</h2>
-      </div>
-      
-      <div class="terminal-section">
-        <div class="terminal-topbar">
-          <div class="terminal-tabs">
-            <button class="term-btn active" onclick="runScript('niif')">calculo_niif16.py</button>
-            <button class="term-btn" onclick="runScript('planillas')">automatizacion_balltre.py</button>
-            <button class="term-btn" onclick="runScript('arqueo')">conciliacion_caja.py</button>
-          </div>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Python 3.11 Runtime</span>
+    <!-- Simulador Dinámico Interactivo -->
+    <div class="interactive-panel">
+      <div class="panel-header">
+        <div style="font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i data-lucide="calculator" style="color: var(--accent-cyan); width: 18px;"></i>
+          Simulador de Modelos Financieros
         </div>
-        <div class="terminal-body" id="term-content"></div>
+        <div class="tab-group">
+          <button class="tab-btn active" onclick="loadSim('niif16')">Modelo NIIF 16</button>
+          <button class="tab-btn" onclick="loadSim('eeff')">Análisis de Ratios EEFF</button>
+          <button class="tab-btn" onclick="loadSim('caja')">Control de Flujo de Caja</button>
+        </div>
       </div>
-    </section>
+      <div class="console-box" id="sim-output"></div>
+    </div>
 
     <!-- Experiencia Profesional -->
     <section>
-      <div class="section-header">
-        <i data-lucide="briefcase" style="color: var(--accent-cyan);"></i>
-        <h2>Trayectoria Profesional</h2>
+      <h2 class="section-title"><i data-lucide="briefcase" style="color: var(--accent-cyan);"></i> Trayectoria Profesional</h2>
+      
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Docente de Herramientas Informáticas</div>
+            <div class="card-subtitle">Centro de Informática - UNMSM</div>
+          </div>
+          <div class="card-date">Ago 2025 – Jul 2026</div>
+        </div>
+        <ul class="card-list">
+          <li>Instrucción práctica en Windows SO, Word, Excel y PowerPoint aplicada a grupos de más de 30 estudiantes por ciclo.</li>
+        </ul>
       </div>
 
-      <div class="timeline">
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="role-title">Docente de Herramientas Informáticas</div>
-              <div class="company-name">Centro de Informática - UNMSM</div>
-            </div>
-            <div class="period-badge">Ago 2025 – Jul 2026</div>
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Auxiliar Contable</div>
+            <div class="card-subtitle">Balltre SCRL</div>
           </div>
-          <ul class="timeline-bullets">
-            <li>Capacitación aplicada en sistemas operativos, Word, Excel y PowerPoint con enfoque analítico para grupos superiores a 30 estudiantes.</li>
-          </ul>
+          <div class="card-date">Mar 2026 – Jul 2026</div>
         </div>
+        <ul class="card-list">
+          <li>Optimización de expedientes de licitaciones con el Estado y cálculo estructurado de planillas.</li>
+          <li>Implementación de infraestructura de trabajo en red colaborativa vía OneDrive.</li>
+        </ul>
+      </div>
 
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="role-title">Auxiliar Contable</div>
-              <div class="company-name">Balltre SCRL</div>
-            </div>
-            <div class="period-badge">Mar 2026 – Jul 2026</div>
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Asistente Contable</div>
+            <div class="card-subtitle">Mac Pherson Consultores & Asociados S.A.C.</div>
           </div>
-          <ul class="timeline-bullets">
-            <li>Reducción del 40% en tiempos de procesamiento de planillas aplicando automatización con Python y macros de Excel.</li>
-            <li>Optimización de expedientes para licitaciones con el Estado e integración de red OneDrive para trabajo colaborativo.</li>
-          </ul>
+          <div class="card-date">Dic 2023 – Mar 2024</div>
         </div>
+        <ul class="card-list">
+          <li>Registro mensual de más de 200 asientos bajo normativa PCGE y NIIF con Contasol.</li>
+          <li>Elaboración de papeles de trabajo estructurados para consolidación de EEFF y cálculo de NIIF 16 sin reprocesos.</li>
+        </ul>
+      </div>
 
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="role-title">Asistente Administrativo</div>
-              <div class="company-name">Notaría Ciro Gálvez</div>
-            </div>
-            <div class="period-badge">Jul 2025 – Ene 2026</div>
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Asistente Administrativo</div>
+            <div class="card-subtitle">Notaría Ciro Gálvez / UNMSM Archivo Central</div>
           </div>
-          <ul class="timeline-bullets">
-            <li>Implementación de sistema en Excel logrando 0 incidencias por expedientes extraviados y 20% de ahorro de tiempo.</li>
-          </ul>
+          <div class="card-date">2023 – 2026</div>
         </div>
-
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="role-title">Asistente Administrativo</div>
-              <div class="company-name">UNMSM - Archivo Central</div>
-            </div>
-            <div class="period-badge">Ago 2023 – Mar 2025</div>
-          </div>
-          <ul class="timeline-bullets">
-            <li>Creación de un índice digital de clasificación para más de 3,000 expedientes, reduciendo el tiempo de búsqueda en un 50%.</li>
-          </ul>
-        </div>
-
-        <div class="timeline-card">
-          <div class="timeline-header">
-            <div>
-              <div class="role-title">Asistente Contable</div>
-              <div class="company-name">Mac Pherson Consultores & Asociados S.A.C.</div>
-            </div>
-            <div class="period-badge">Dic 2023 – Mar 2024</div>
-          </div>
-          <ul class="timeline-bullets">
-            <li>Registro mensual de +200 asientos bajo PCGE y NIIF con Contasol. Elaboración de papeles de trabajo para consolidación de EEFF y cálculo de NIIF 16.</li>
-          </ul>
-        </div>
+        <ul class="card-list">
+          <li>Cero incidencias en expedientes legales y reducción del 50% en búsqueda documental tras estructurar un índice digital de +3,000 archivos.</li>
+        </ul>
       </div>
     </section>
 
-    <!-- Stack Tecnológico Filtrable -->
+    <!-- Educación -->
     <section>
-      <div class="section-header">
-        <i data-lucide="layers" style="color: var(--accent);"></i>
-        <h2>Competencias & Tecnologías</h2>
+      <h2 class="section-title"><i data-lucide="graduation-cap" style="color: var(--accent-blue);"></i> Formación Académica</h2>
+      <div class="card">
+        <div class="card-head">
+          <div>
+            <div class="card-title">Universidad Nacional Mayor de San Marcos</div>
+            <div class="card-subtitle">Bachillerato en Contabilidad (Presupuesto y Finanzas)</div>
+          </div>
+          <div class="card-date">2023 – Presente</div>
+        </div>
+        <p style="color: #38bdf8; font-size: 0.88rem; margin-top: 0.35rem; font-weight: 600;">
+          ★ Constancia de Orden de Mérito N° 30 • Tercio Superior
+        </p>
       </div>
+    </section>
 
-      <div class="skills-filter">
-        <button class="filter-pill active" onclick="filterSkills('all')">Todos</button>
-        <button class="filter-pill" onclick="filterSkills('contable')">Contabilidad & Normas</button>
-        <button class="filter-pill" onclick="filterSkills('tech')">Programación & Data</button>
-      </div>
-
-      <div class="skills-grid" id="skills-container">
-        <div class="skill-box" data-cat="tech">Python</div>
-        <div class="skill-box" data-cat="tech">Excel Avanzado & VBA</div>
-        <div class="skill-box" data-cat="tech">Power BI</div>
-        <div class="skill-box" data-cat="tech">SQL</div>
-        <div class="skill-box" data-cat="contable">Concar</div>
-        <div class="skill-box" data-cat="contable">Contasol</div>
-        <div class="skill-box" data-cat="contable">Contasis</div>
-        <div class="skill-box" data-cat="contable">PCGE / NIIF</div>
-        <div class="skill-box" data-cat="contable">NIIF 16 (Arrendamientos)</div>
-        <div class="skill-box" data-cat="contable">Consolidación EEFF</div>
+    <!-- Competencias -->
+    <section>
+      <h2 class="section-title"><i data-lucide="check-circle-2" style="color: var(--emerald);"></i> Competencias Técnicas</h2>
+      <div class="skills-grid">
+        <span class="skill-chip">Marco PCGE & NIIF</span>
+        <span class="skill-chip">Cálculo NIIF 16 (Arrendamientos)</span>
+        <span class="skill-chip">Análisis y Consolidación de EEFF</span>
+        <span class="skill-chip">Papeles de Trabajo</span>
+        <span class="skill-chip">Concar</span>
+        <span class="skill-chip">Contasol</span>
+        <span class="skill-chip">Contasis</span>
+        <span class="skill-chip">Excel Avanzado & Fórmulas Financieras</span>
+        <span class="skill-chip">Inglés Intermedio (ICPNA)</span>
       </div>
     </section>
 
     <footer>
-      <p>© 2026 Brayan Melvin Iriarte Peralta • UNMSM Ciencias Contables</p>
+      <p>© 2026 Brayan Melvin Iriarte Peralta • Lima, Perú</p>
     </footer>
   </div>
 
   <script>
-    // Inicializar Iconos
     lucide.createIcons();
 
-    // Fondo interactivo de partículas
-    const canvas = document.getElementById('canvas-bg');
+    // Fondo interactivo Canvas
+    const canvas = document.getElementById('particles-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
 
-    function resize() {
+    function initCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     }
-    window.addEventListener('resize', resize);
-    resize();
+    window.addEventListener('resize', initCanvas);
+    initCanvas();
 
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.6;
-        this.vy = (Math.random() - 0.5) * 0.6;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
         this.radius = Math.random() * 2 + 1;
       }
       update() {
@@ -648,14 +509,14 @@
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(59, 130, 246, 0.35)';
+        ctx.fillStyle = 'rgba(59, 130, 246, 0.3)';
         ctx.fill();
       }
     }
 
-    for (let i = 0; i < 45; i++) particles.push(new Particle());
+    for (let i = 0; i < 40; i++) particles.push(new Particle());
 
-    function animate() {
+    function render() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (let i = 0; i < particles.length; i++) {
         particles[i].update();
@@ -664,9 +525,9 @@
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
+          if (dist < 110) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(59, 130, 246, ${0.15 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(59, 130, 246, ${0.12 * (1 - dist / 110)})`;
             ctx.lineWidth = 1;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -674,59 +535,41 @@
           }
         }
       }
-      requestAnimationFrame(animate);
+      requestAnimationFrame(render);
     }
-    animate();
+    render();
 
-    // Scripts interactivos del terminal
-    const scripts = {
-      niif: `>>> Ejecutando calculo_niif16.py...
-[INFO] Modelo de Arrendamiento Financiero NIIF 16
-[PARAM] Cuota mensual: USD 2,500.00 | Plazo: 24 periodos
-[PARAM] Tasa de Descuento (IBR): 0.6434% efectivo mensual
-[CALC] Calculando Valor Presente de Flujos Futuros...
-✓ PASIVO INICIAL ESTIMADO : USD 55,482.19
-✓ ACTIVO POR DERECHO DE USO: USD 55,482.19
-[STATUS] Cuadro de amortización y asientos PCGE generados con éxito.`,
+    // Simulador de modelos financieros
+    const simulations = {
+      niif16: `=== EVALUACIÓN NIIF 16: VALORACIÓN DE ARRENDAMIENTO ===
+• Cuota Mensual: USD 2,500.00 | Plazo: 24 periodos
+• Tasa Efectiva de Descuento: 0.6434% mensual
+-----------------------------------------------------------
+✓ Pasivo por Arrendamiento Inicial: USD 55,482.19
+✓ Activo por Derecho de Uso: USD 55,482.19
+✓ Desviación en Cierre: 0.00% (Cuadro de Amortización Conciliado)`,
 
-      planillas: `>>> Ejecutando automatizacion_balltre.py...
-[INFO] Importando registros de asistencia y tareo desde OneDrive...
-[PROCESS] Calculando AFP, ONP, Essalud y 5ta Categoría...
-[OPTIMIZACIÓN] Tiempo previo manual: 120 min | Tiempo de ejecución: 12 seg.
-✓ REDUCCIÓN EFECTIVA: 40% en carga operativa.
-[STATUS] Asientos de planilla 62/40 exportados a formato Concar.`,
+      eeff: `=== DIAGNÓSTICO FINANCIERO: RATIOS CLAVE ===
+• Ratio de Liquidez Corriente: 1.85 (Solvencia óptima a corto plazo)
+• Prueba Ácida: 1.32 (Capacidad de pago sin depender de inventarios)
+• Margen Operativo: 21.4% | ROE: 16.8%
+-----------------------------------------------------------
+✓ Conclusión: Estructura de capital sólida y flujo operacional estable.`,
 
-      arqueo: `>>> Ejecutando conciliacion_caja.py...
-[INFO] Conciliación bancaria y caja chica (El Primer Marino)
-[DATA] Total registros evaluados: 480 transacciones mensuales.
-✓ Desviación en cierres: 0.00% (Consistencia absoluta).
-[STATUS] Alertas de cobros pendientes reducidas en un 20%.`
+      caja: `=== CONTROL DE TESORERÍA Y CONCILIACIÓN BANCARIA ===
+• Entradas del Periodo: S/ 142,500.00
+• Salidas Operativas: S/ 118,200.00
+• Conciliación Bancaria: Desviación Cero (95% de cierres mensuales)
+-----------------------------------------------------------
+✓ Tiempos de detección de cobranzas reducidos en un 20%.`
     };
 
-    function runScript(key) {
-      document.querySelectorAll('.term-btn').forEach(b => b.classList.remove('active'));
+    function loadSim(key) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       event.target.classList.add('active');
-      const box = document.getElementById('term-content');
-      box.innerHTML = "Cargando script...";
-      setTimeout(() => {
-        box.innerHTML = scripts[key];
-      }, 150);
+      document.getElementById('sim-output').innerText = simulations[key];
     }
-    runScript('niif');
-
-    // Filtro de Skills
-    function filterSkills(cat) {
-      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
-      event.target.classList.add('active');
-      const boxes = document.querySelectorAll('.skill-box');
-      boxes.forEach(box => {
-        if (cat === 'all' || box.dataset.cat === cat) {
-          box.style.display = 'block';
-        } else {
-          box.style.display = 'none';
-        }
-      });
-    }
+    loadSim('niif16');
   </script>
 </body>
 </html>
