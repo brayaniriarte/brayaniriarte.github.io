@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brayan Melvin Iriarte Peralta | Consultoría Contable & Finanzas</title>
   
-  <!-- Icono de la pestaña (Favicon) -->
   <link rel="icon" type="image/png" href="brayanicono.png">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +27,10 @@
       --accent-soft: #eff6ff;
       --emerald: #059669;
       --emerald-soft: #ecfdf5;
+      --amber: #d97706;
+      --amber-soft: #fef3c7;
+      --rose: #e11d48;
+      --rose-soft: #ffe4e6;
       --tag-bg: #f1f5f9;
     }
 
@@ -42,7 +45,7 @@
     }
 
     .container {
-      max-width: 920px;
+      max-width: 960px;
       margin: 0 auto;
       padding: 0 1.5rem;
     }
@@ -64,9 +67,7 @@
       letter-spacing: -0.01em;
       color: var(--text-main);
     }
-    .nav-phrase .highlight {
-      color: var(--accent);
-    }
+    .nav-phrase .highlight { color: var(--accent); }
 
     .status-badge {
       display: inline-flex;
@@ -90,9 +91,7 @@
     }
 
     /* Hero */
-    .hero {
-      margin-bottom: 3.5rem;
-    }
+    .hero { margin-bottom: 3.5rem; }
 
     .hero-eyebrow {
       font-size: 0.82rem;
@@ -115,7 +114,7 @@
     .hero p {
       color: var(--text-muted);
       font-size: 1.05rem;
-      max-width: 740px;
+      max-width: 760px;
       margin-bottom: 1.75rem;
     }
 
@@ -227,7 +226,7 @@
     .metric-val { font-size: 1.75rem; font-weight: 800; color: var(--text-main); }
     .metric-lbl { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
 
-    /* Proyectos */
+    /* Secciones Generales */
     section { margin-bottom: 3.5rem; }
     .section-title {
       font-size: 1.25rem;
@@ -241,18 +240,21 @@
       letter-spacing: -0.01em;
     }
 
+    /* Contenedor de Proyectos */
     .projects-container {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
       margin-bottom: 1rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
     }
 
     .projects-nav {
       display: flex;
       border-bottom: 1px solid var(--border);
       background: #f8fafc;
+      overflow-x: auto;
     }
 
     .proj-tab {
@@ -267,6 +269,7 @@
       align-items: center;
       gap: 0.5rem;
       border-bottom: 2px solid transparent;
+      white-space: nowrap;
       transition: all 0.15s;
     }
 
@@ -282,67 +285,15 @@
     }
     .proj-content.active { display: block; }
 
-    .upload-box {
-      border: 2px dashed #cbd5e1;
-      border-radius: 10px;
-      padding: 2.2rem 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      background: #fbfcfe;
-      transition: all 0.2s;
-    }
-    .upload-box:hover { border-color: var(--accent); background: var(--accent-soft); }
-    .upload-box input { display: none; }
-
-    .file-pill {
-      display: none;
-      align-items: center;
-      justify-content: space-between;
-      background: var(--tag-bg);
-      padding: 0.6rem 1rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-      font-size: 0.88rem;
-      border: 1px solid var(--border);
-    }
-    .file-pill.show { display: flex; }
-
-    .results-view { display: none; margin-top: 1.5rem; }
-    .results-view.show { display: block; }
-
-    .score-banner {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      padding: 1.25rem;
-      border-radius: 10px;
-      margin-bottom: 1.5rem;
-    }
-    .score-digit { font-size: 2.2rem; font-weight: 800; color: var(--emerald); }
-
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.85rem;
-      margin-top: 1rem;
-    }
-    .data-table th, .data-table td {
-      padding: 0.6rem 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid var(--border);
-    }
-    .data-table th { color: var(--text-muted); font-weight: 600; background: #f8fafc; }
-
+    /* Formularios y Inputs */
     .calc-grid {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 310px 1fr;
       gap: 2rem;
     }
-    @media (max-width: 720px) { .calc-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .calc-grid { grid-template-columns: 1fr; } }
 
-    .input-field { margin-bottom: 1rem; }
+    .input-field { margin-bottom: 0.9rem; }
     .input-field label {
       display: block;
       font-size: 0.82rem;
@@ -350,7 +301,7 @@
       color: var(--text-muted);
       margin-bottom: 0.35rem;
     }
-    .input-field input {
+    .input-field input, .input-field select {
       width: 100%;
       padding: 0.55rem 0.75rem;
       border-radius: 6px;
@@ -358,17 +309,170 @@
       font-size: 0.9rem;
       outline: none;
       font-family: inherit;
+      background: #ffffff;
     }
-    .input-field input:focus { border-color: var(--accent); }
+    .input-field input:focus, .input-field select:focus { border-color: var(--accent); }
 
-    .calc-res-card {
+    .calc-res-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .calc-res-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem;
+    }
+    .calc-res-lbl { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
+    .calc-res-val { font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 0.2rem; }
+
+    .score-meter-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .score-card {
       background: #f8fafc;
       border: 1px solid var(--border);
       border-radius: 10px;
       padding: 1.25rem;
-      margin-top: 1rem;
+      text-align: center;
     }
-    .calc-total { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+
+    .score-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-top: 0.5rem;
+    }
+
+    .journal-box {
+      background: #0f172a;
+      color: #f8fafc;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    /* ESTILOS FINANCITO Y BIBLIOTECA NIIF */
+    .financito-chat-wrap {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f8fafc;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 380px;
+    }
+
+    .financito-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .chat-bubble {
+      max-width: 85%;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .bubble-bot {
+      align-self: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .bubble-user {
+      align-self: flex-end;
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .financito-input-bar {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .financito-input-bar input {
+      flex: 1;
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .quick-chips {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    .chip-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .chip-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* Acordeón Biblioteca NIIF */
+    .accordion-item {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      padding: 0.85rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    .accordion-header:hover { background: #f8fafc; }
+
+    .accordion-body {
+      display: none;
+      padding: 1rem;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background: #fbfcfe;
+    }
+    .accordion-body.open { display: block; }
 
     /* Carrusel */
     .carousel-container {
@@ -396,15 +500,8 @@
       align-items: center;
       justify-content: center;
     }
-
     .carousel-slide.active { opacity: 1; }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      background: #0f172a;
-    }
+    .carousel-slide img { width: 100%; height: 100%; object-fit: contain; }
 
     .carousel-dots {
       position: absolute;
@@ -422,13 +519,8 @@
       background: rgba(255, 255, 255, 0.4);
       border-radius: 50%;
       cursor: pointer;
-      transition: all 0.2s;
     }
-    .dot.active {
-      background: #ffffff;
-      width: 20px;
-      border-radius: 4px;
-    }
+    .dot.active { background: #ffffff; width: 20px; border-radius: 4px; }
 
     /* Cards */
     .card {
@@ -493,7 +585,7 @@
         Información Financiera Precisa para Decisiones de Alto Valor.
       </h1>
       <p>
-        Asistente Contable enfocado en normativa <strong>PCGE / NIIF</strong>, cálculo de <strong>NIIF 16</strong>, elaboración de papeles de trabajo y análisis de estados financieros. Egresado de la especialidad de <strong>Presupuesto y Finanzas</strong> de la UNMSM (Tercio Superior)[cite: 1, 2].
+        Asistente Contable enfocado en normativa <strong>PCGE / NIIF</strong>, cálculo de <strong>NIIF 16</strong>, elaboración de papeles de trabajo y análisis de estados financieros[cite: 1, 2]. Egresado de la especialidad de <strong>Presupuesto y Finanzas</strong> de la UNMSM (Tercio Superior)[cite: 1, 2].
       </p>
       <div class="hero-actions">
         <a href="mailto:brayan.iriartep@gmail.com" class="btn btn-primary">
@@ -551,101 +643,279 @@
       </div>
     </div>
 
-    <!-- PROYECTOS FINANCIEROS -->
+    <!-- SECCIÓN PROYECTOS FINANCIEROS INTERACTIVOS -->
     <section>
       <h2 class="section-title"><i data-lucide="layout-grid" style="color: var(--accent);"></i> Proyectos Financieros Interactivos</h2>
       
       <div class="projects-container">
         <div class="projects-nav">
-          <button class="proj-tab active" onclick="switchTab('tab-sentinel')">
-            <i data-lucide="file-search"></i> Analizador Reporte Sentinel
+          <button class="proj-tab active" onclick="switchTab('tab-financito')">
+            <i data-lucide="bot"></i> FinancIto: Agente IA en NIC & NIIF
+          </button>
+          <button class="proj-tab" onclick="switchTab('tab-biblioteca')">
+            <i data-lucide="book-open"></i> Biblioteca Desplegable NIC / NIIF
+          </button>
+          <button class="proj-tab" onclick="switchTab('tab-sentinel')">
+            <i data-lucide="shield-check"></i> Diagnóstico Crediticio (Sentinel/SBS)
           </button>
           <button class="proj-tab" onclick="switchTab('tab-compound')">
-            <i data-lucide="trending-up"></i> Calculadora Interés Compuesto
+            <i data-lucide="trending-up"></i> Simulador Interés Compuesto
+          </button>
+          <button class="proj-tab" onclick="switchTab('tab-niif16')">
+            <i data-lucide="calculator"></i> Validador NIIF 16 (PCGE)
           </button>
         </div>
 
-        <!-- TAB 1: SENTINEL -->
-        <div class="proj-content active" id="tab-sentinel">
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
-            Procesamiento directo en tu navegador: extrae el score, entidades crediticias y comportamiento financiero del reporte PDF sin enviar datos a servidores externos.
+        <!-- TAB 1: AGENTE FINANCITO -->
+        <div class="proj-content active" id="tab-financito">
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
+            <strong>FinancIto</strong> es un asistente contable interactivo capacitado en el marco técnico de las <strong>Normas Internacionales de Contabilidad (NIC)</strong>, <strong>NIIF</strong> y su correspondencia con el <strong>PCGE</strong>.
           </p>
 
-          <div class="upload-box" onclick="document.getElementById('sentinel-file').click()">
-            <i data-lucide="upload-cloud" style="width:36px; height:36px; color:var(--accent); margin-bottom:0.5rem;"></i>
-            <div style="font-weight: 700; font-size: 0.95rem;">Selecciona o arrastra tu reporte Sentinel en PDF</div>
-            <div style="color: var(--text-muted); font-size: 0.82rem; margin-top: 0.25rem;">Formato .pdf oficial de central de riesgo</div>
-            <input type="file" id="sentinel-file" accept="application/pdf">
-          </div>
-
-          <div class="file-pill" id="file-pill">
-            <span id="file-pill-text" style="font-weight: 600;">archivo.pdf</span>
-            <button onclick="clearPDF()" style="background:none; border:none; color:var(--text-muted); cursor:pointer;">
-              <i data-lucide="x" style="width:16px;"></i>
-            </button>
-          </div>
-
-          <button class="btn btn-primary" id="btn-parse-pdf" onclick="processSentinelPDF()" style="width:100%; margin-top:1rem; justify-content:center; display:none;">
-            <i data-lucide="play"></i> Analizar Reporte
-          </button>
-
-          <div id="pdf-status" style="font-size:0.85rem; color:var(--accent); margin-top:0.75rem; font-weight:600; display:none;"></div>
-
-          <div class="results-view" id="sentinel-results">
-            <div class="score-banner">
-              <div>
-                <div style="font-size:0.78rem; text-transform:uppercase; color:var(--text-muted); font-weight:700;">Score Crediticio</div>
-                <div class="score-digit" id="res-score">Normal</div>
+          <div class="financito-chat-wrap">
+            <div class="financito-messages" id="chat-messages">
+              <div class="chat-bubble bubble-bot">
+                👋 <strong>¡Hola! Soy FinancIto</strong>, tu asistente de consulta contable. Pregúntame sobre cualquier NIC, NIIF o asiento bajo PCGE (ej. <em>"¿Cómo se registra la NIIF 16?"</em>, <em>"¿Qué dice la NIC 2 de inventarios?"</em> o <em>"Diferencia entre NIC 16 y NIC 40"</em>).
               </div>
-              <div style="border-left: 1px solid var(--border); padding-left: 1.5rem;">
-                <div style="font-size: 0.9rem; font-weight: 700;">Diagnóstico del Titular</div>
-                <p id="res-diag" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">Cumplimiento regular y obligaciones vigentes al día.</p>
+            </div>
+            <div class="financito-input-bar">
+              <input type="text" id="chat-input" placeholder="Haz tu consulta contable a FinancIto..." onkeydown="if(event.key==='Enter') sendToFinancito()">
+              <button class="btn btn-primary" onclick="sendToFinancito()" style="padding:0.5rem 1rem;">
+                <i data-lucide="send" style="width:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="quick-chips">
+            <span style="font-size:0.78rem; font-weight:700; color:var(--text-muted);">Consultas frecuentes:</span>
+            <button class="chip-btn" onclick="askPreset('¿Cómo se calcula y registra la NIIF 16?')">NIIF 16 Arrendamientos</button>
+            <button class="chip-btn" onclick="askPreset('¿Qué criterios establece la NIC 2 para valuación de inventarios?')">NIC 2 Inventarios</button>
+            <button class="chip-btn" onclick="askPreset('¿Cuándo se reconoce un ingreso bajo NIIF 15?')">NIIF 15 Ingresos</button>
+            <button class="chip-btn" onclick="askPreset('¿Cuál es el tratamiento de la NIC 16 en Propiedad, Planta y Equipo?')">NIC 16 PPE</button>
+          </div>
+        </div>
+
+        <!-- TAB 2: BIBLIOTECA DESPLEGABLE NIC Y NIIF -->
+        <div class="proj-content" id="tab-biblioteca">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem; flex-wrap:wrap; gap:0.5rem;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">
+              Compendio técnico de las principales normas contables aplicadas en auditoría y estados financieros.
+            </p>
+            <input type="text" id="search-niif" placeholder="🔍 Filtrar norma (ej. NIC 16, NIIF 9)..." onkeyup="filterLibrary()" style="padding:0.4rem 0.75rem; border-radius:6px; border:1px solid var(--border); font-size:0.85rem;">
+          </div>
+
+          <div id="library-list">
+            <div class="accordion-item" data-norm="nic 1 presentacion estados financieros">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><strong>NIC 1</strong> — Presentación de Estados Financieros</span>
+                <i data-lucide="chevron-down" style="width:16px;"></i>
+              </div>
+              <div class="accordion-body">
+                <strong>Objetivo:</strong> Establece las bases de presentación de los EEFF de propósito general para asegurar su comparabilidad. Exige los 4 estados financieros fundamentales más las notas: Estado de Situación Financiera, Estado de Resultados, Estado de Cambios en el Patrimonio y Estado de Flujos de Efectivo.
               </div>
             </div>
 
-            <h4 style="font-size: 0.9rem; margin-bottom: 0.5rem;">Resumen de Entidades e Indicadores Detectados</h4>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Concepto / Entidad</th>
-                  <th>Detalle Detectado</th>
-                  <th>Estado</th>
-                </tr>
-              </thead>
-              <tbody id="res-table-body"></tbody>
-            </table>
+            <div class="accordion-item" data-norm="nic 2 inventarios existencias vnr costo">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><strong>NIC 2</strong> — Inventarios (Existencias)</span>
+                <i data-lucide="chevron-down" style="width:16px;"></i>
+              </div>
+              <div class="accordion-body">
+                <strong>Medición:</strong> Al menor valor entre el Costo de Adquisición/Transformación y el <strong>Valor Neto Realizable (VNR)</strong>. Prohíbe expresamente el método LIFO/UEPS, permitiendo únicamente PEPS (FIFO) o Costo Promedio Ponderado. <em>Cuentas PCGE vinculadas: Elemento 2 y Cta 69.</em>
+              </div>
+            </div>
+
+            <div class="accordion-item" data-norm="nic 16 propiedad planta equipo activo fijo">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><strong>NIC 16</strong> — Propiedades, Planta y Equipo</span>
+                <i data-lucide="chevron-down" style="width:16px;"></i>
+              </div>
+              <div class="accordion-body">
+                <strong>Reconocimiento:</strong> Activos tangibles para uso en la producción o administración con vida útil mayor a 1 año. Medición posterior: Modelo del Costo o Modelo de Revaluación. Requiere depreciación por componentes y revisión de vida útil anual. <em>Cuentas PCGE: Cta 33 y Cta 39.</em>
+              </div>
+            </div>
+
+            <div class="accordion-item" data-norm="niif 9 instrumentos financieros deterioro">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><strong>NIIF 9</strong> — Instrumentos Financieros</span>
+                <i data-lucide="chevron-down" style="width:16px;"></i>
+              </div>
+              <div class="accordion-body">
+                <strong>Modelo de Pérdidas Crediticias Esperadas (PCE):</strong> Reconocimiento preventivo del deterioro de cuentas por cobrar desde su origen sin esperar el incumplimiento real. Clasificación de activos en Costo Amortizado, VR con cambios en ORI o VR con cambios en Resultados.
+              </div>
+            </div>
+
+            <div class="accordion-item" data-norm="niif 15 ingresos actividades ordinarias contratos">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><strong>NIIF 15</strong> — Ingresos de Actividades Ordinarias procedentes de Contratos</span>
+                <i data-lucide="chevron-down" style="width:16px;"></i>
+              </div>
+              <div class="accordion-body">
+                <strong>Modelo de los 5 Pasos:</strong> 1) Identificar contrato, 2) Identificar obligaciones de desempeño, 3) Determinar precio de transacción, 4) Asignar precio a obligaciones, 5) Reconocer ingreso cuando se transfiere el control del bien o servicio. <em>Cuentas PCGE: Cta 12 y Cta 70.</em>
+              </div>
+            </div>
+
+            <div class="accordion-item" data-norm="niif 16 arrendamientos pasivo derecho uso">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <span><strong>NIIF 16</strong> — Arrendamientos</span>
+                <i data-lucide="chevron-down" style="width:16px;"></i>
+              </div>
+              <div class="accordion-body">
+                <strong>Eliminación de la distinción operativa para el arrendatario:</strong> Todos los contratos deben registrar un <strong>Activo por Derecho de Uso (Cta 32)</strong> y un <strong>Pasivo Financiero (Cta 45)</strong> por el valor presente de las cuotas futuras, reconociendo gasto por depreciación (Cta 68) y gasto por interés financiero (Cta 67).
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- TAB 2: INTERÉS COMPUESTO -->
+        <!-- TAB 3: DIAGNÓSTICO SENTINEL & SBS -->
+        <div class="proj-content" id="tab-sentinel">
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Evaluación basada en la metodología de la SBS y centrales de riesgo peruanas: analiza score, ratio de endeudamiento sobre ingresos (DTI) y capacidad de apalancamiento.
+          </p>
+
+          <div class="calc-grid">
+            <div>
+              <div class="input-field">
+                <label>Ingreso Neto Mensual (S/)</label>
+                <input type="number" id="sc-income" value="3500" step="100">
+              </div>
+              <div class="input-field">
+                <label>Pago Total de Deudas Mensuales (S/)</label>
+                <input type="number" id="sc-debt-pmt" value="750" step="50">
+              </div>
+              <div class="input-field">
+                <label>Historial de Pago (Últimos 12 meses)</label>
+                <select id="sc-history">
+                  <option value="100">Puntual (0 días de atraso) - Categoría Normal 0</option>
+                  <option value="80">Atrasos menores a 8 días - Alerta temprana</option>
+                  <option value="50">Atrasos entre 9 y 30 días - CPP</option>
+                  <option value="20">Atrasos mayores a 31 días - Deficiente / Dudoso</option>
+                </select>
+              </div>
+              <div class="input-field">
+                <label>Uso de Líneas de Tarjeta de Crédito (%)</label>
+                <input type="number" id="sc-utilization" value="25" min="0" max="100">
+              </div>
+
+              <button class="btn btn-primary" onclick="calcCreditScore()" style="width:100%; margin-top:0.5rem; justify-content:center;">
+                <i data-lucide="refresh-cw"></i> Calcular Score & Riesgo
+              </button>
+            </div>
+
+            <div>
+              <div class="score-meter-wrap">
+                <div class="score-card">
+                  <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">SCORE ESTIMADO</div>
+                  <div style="font-size:2rem; font-weight:800; color:var(--accent);" id="sc-score-val">860 / 1000</div>
+                  <span class="score-badge" id="sc-badge" style="background:var(--emerald-soft); color:var(--emerald);">RIESGO MUY BAJO</span>
+                </div>
+                <div class="score-card">
+                  <div style="font-size:0.75rem; color:var(--text-muted); font-weight:700;">RATIO ENDEUDAMIENTO (DTI)</div>
+                  <div style="font-size:2rem; font-weight:800; color:var(--text-main);" id="sc-dti-val">21.4%</div>
+                  <span class="score-badge" style="background:var(--tag-bg); color:var(--text-muted);">LÍMITE SANO: < 35%</span>
+                </div>
+              </div>
+
+              <div style="background:#f8fafc; border:1px solid var(--border); border-radius:10px; padding:1rem;">
+                <div style="font-weight:700; font-size:0.9rem; margin-bottom:0.35rem; display:flex; align-items:center; gap:0.4rem;">
+                  <i data-lucide="check-circle-2" style="width:16px; color:var(--emerald);"></i> Dictamen del Analista Financiero:
+                </div>
+                <p id="sc-opinion" style="font-size:0.85rem; color:var(--text-muted);">
+                  Perfil calificado para créditos corporativos e hipotecarios con las tasas más competitivas del mercado.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 4: INTERÉS COMPUESTO -->
         <div class="proj-content" id="tab-compound">
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Simulador cuantitativo de crecimiento patrimonial: proyecta el efecto exponencial de los intereses acumulados a través del tiempo.
+          </p>
           <div class="calc-grid">
             <div>
               <div class="input-field">
                 <label>Capital Inicial (S/ o USD)</label>
-                <input type="number" id="ci-initial" value="5000" step="500">
+                <input type="number" id="ci-initial" value="10000" step="1000">
               </div>
               <div class="input-field">
-                <label>Aporte Mensual Adicional</label>
-                <input type="number" id="ci-monthly" value="300" step="50">
+                <label>Aporte Mensual</label>
+                <input type="number" id="ci-monthly" value="500" step="50">
               </div>
               <div class="input-field">
-                <label>Tasa de Rentabilidad Anual (%)</label>
-                <input type="number" id="ci-rate" value="8" step="0.5">
+                <label>Tasa Rendimiento Anual (%)</label>
+                <input type="number" id="ci-rate" value="10" step="0.5">
               </div>
               <div class="input-field">
-                <label>Plazo en Años</label>
-                <input type="number" id="ci-years" value="5" max="30">
+                <label>Horizonte en Años</label>
+                <input type="number" id="ci-years" value="10" max="40">
               </div>
 
-              <div class="calc-res-card">
-                <div style="font-size:0.8rem; color:var(--text-muted); font-weight:600;">Monto Proyectado Final</div>
-                <div class="calc-total" id="ci-final-total">S/ 0.00</div>
+              <div class="calc-res-grid">
+                <div class="calc-res-box">
+                  <div class="calc-res-lbl">Monto Final Proyectado</div>
+                  <div class="calc-res-val" id="ci-final-total" style="color:var(--accent);">S/ 0.00</div>
+                </div>
+                <div class="calc-res-box">
+                  <div class="calc-res-lbl">Ganancia Neta por Intereses</div>
+                  <div class="calc-res-val" id="ci-interest-total" style="color:var(--emerald);">S/ 0.00</div>
+                </div>
               </div>
             </div>
 
             <div>
-              <canvas id="compoundChart" style="max-height: 280px; width: 100%;"></canvas>
+              <canvas id="compoundChart" style="max-height: 290px; width: 100%;"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 5: VALIDADOR NIIF 16 -->
+        <div class="proj-content" id="tab-niif16">
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Modelo de valuación de contratos de arrendamiento según NIIF 16 con estructura de asientos PCGE[cite: 1, 2].
+          </p>
+
+          <div class="calc-grid">
+            <div>
+              <div class="input-field">
+                <label>Cuota Mensual (USD)</label>
+                <input type="number" id="n16-cuota" value="2500" step="100">
+              </div>
+              <div class="input-field">
+                <label>Plazo del Contrato (Meses)</label>
+                <input type="number" id="n16-meses" value="24" step="6">
+              </div>
+              <div class="input-field">
+                <label>Tasa de Descuento Anual (IBR %)</label>
+                <input type="number" id="n16-tasa" value="7.5" step="0.5">
+              </div>
+
+              <button class="btn btn-primary" onclick="calcNIIF16()" style="width:100%; margin-top:0.5rem; justify-content:center;">
+                <i data-lucide="calculator"></i> Generar Valuación & Asiento
+              </button>
+            </div>
+
+            <div>
+              <div class="calc-res-grid" style="margin-top:0;">
+                <div class="calc-res-box">
+                  <div class="calc-res-lbl">Pasivo Inicial Reconocido</div>
+                  <div class="calc-res-val" id="n16-pv" style="color:var(--accent);">USD 55,679.52</div>
+                </div>
+                <div class="calc-res-box">
+                  <div class="calc-res-lbl">Intereses Financieros Totales</div>
+                  <div class="calc-res-val" id="n16-interes" style="color:var(--amber);">USD 4,320.48</div>
+                </div>
+              </div>
+
+              <div class="journal-box" id="n16-journal">
+---------------- ASIENTO DE APERTURA NIIF 16 (PCGE) ----------------
+32 ACTIVO POR DERECHO DE USO                     USD 55,679.52
+   322 Edificaciones y contratos
+45 OBLIGACIONES FINANCIERAS                                     USD 55,679.52
+   455 Costos de financiación por pagar (Arrendamiento)
+x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NIIF 16.
+              </div>
             </div>
           </div>
         </div>
@@ -785,21 +1055,18 @@
       dots.forEach((d, i) => d.classList.toggle('active', i === index));
       currentSlide = index;
     }
-
     function nextSlide() {
       currentSlide = (currentSlide + 1) % totalSlides;
       showSlide(currentSlide);
     }
-
     function setSlide(index) {
       showSlide(index);
       clearInterval(slideInterval);
       slideInterval = setInterval(nextSlide, 3500);
     }
-
     let slideInterval = setInterval(nextSlide, 3500);
 
-    // Tabs de Proyectos
+    // Switch de Pestañas
     function switchTab(tabId) {
       document.querySelectorAll('.proj-tab').forEach(b => b.classList.remove('active'));
       document.querySelectorAll('.proj-content').forEach(c => c.classList.remove('active'));
@@ -808,75 +1075,118 @@
       if (tabId === 'tab-compound') updateCompoundChart();
     }
 
-    // LÓGICA SENTINEL PDF
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
-    let loadedPDF = null;
-
-    const fileInput = document.getElementById('sentinel-file');
-    fileInput.addEventListener('change', function(e) {
-      if (e.target.files && e.target.files[0]) {
-        loadedPDF = e.target.files[0];
-        document.getElementById('file-pill-text').innerText = loadedPDF.name;
-        document.getElementById('file-pill').classList.add('show');
-        document.getElementById('btn-parse-pdf').style.display = 'inline-flex';
+    // LÓGICA AGENTE FINANCITO
+    const knowledgeBase = [
+      {
+        keys: ['niif 16', 'arrendamiento', 'arrendamientos', 'derecho de uso'],
+        answer: "📌 <strong>NIIF 16 (Arrendamientos):</strong><br>Elimina la diferencia entre operativo y financiero para el arrendatario. Debes calcular el Valor Presente (VP) de las cuotas futuras y registrar:<br>• <strong>Débito:</strong> Cuenta 32 (Activo por Derecho de Uso)<br>• <strong>Crédito:</strong> Cuenta 45 (Obligaciones Financieras - Pasivo por Arrendamiento)<br>Posteriormente reconoces depreciación (Cta 68) y devengo de intereses (Cta 67)."
+      },
+      {
+        keys: ['nic 2', 'inventarios', 'existencias', 'vnr'],
+        answer: "📦 <strong>NIC 2 (Inventarios):</strong><br>Se valúan al menor valor entre el <em>Costo</em> y el <em>Valor Neto Realizable (VNR)</em>. El costo comprende compra, transformación y otros costos necesarios. Métodos admitidos: PEPS o Promedio Ponderado (se prohíbe LIFO/UEPS). Vinculado a Cta 20 y Cta 69 (Costo de Ventas)."
+      },
+      {
+        keys: ['niif 15', 'ingresos', 'contratos'],
+        answer: "📈 <strong>NIIF 15 (Ingresos de Actividades Ordinarias):</strong><br>Se rige por el modelo de 5 pasos: 1) Identificar contrato, 2) Obligaciones de desempeño, 3) Precio de transacción, 4) Asignación de precio y 5) Reconocimiento del ingreso conforme se transfiera el control (en un momento o a lo largo del tiempo)."
+      },
+      {
+        keys: ['nic 16', 'activo fijo', 'propiedad planta', 'depreciacion'],
+        answer: "🏢 <strong>NIC 16 (Propiedades, Planta y Equipo):</strong><br>Aplica a bienes tangibles para producción o uso administrativo con vida útil > 1 año. Medición posterior: Costo o Revaluación. La depreciación (Cta 39) debe reflejar el patrón de consumo del activo y revisarse anualmente."
+      },
+      {
+        keys: ['niif 9', 'instrumentos financieros', 'deterioro', 'pce'],
+        answer: "💳 <strong>NIIF 9 (Instrumentos Financieros):</strong><br>Exige provisionar el deterioro de cuentas por cobrar bajo el modelo de <em>Pérdidas Crediticias Esperadas (PCE)</em> desde el primer día, sin esperar morosidad prolongada."
+      },
+      {
+        keys: ['pcge', 'asientos', 'cuentas', 'plan contable'],
+        answer: "📊 <strong>Plan Contable General Empresarial (PCGE):</strong><br>Estructura armonizada con las NIIF: Elementos 1, 2, 3 (Activo), 4 (Pasivo), 5 (Patrimonio), 6 (Gastos por Naturaleza), 7 (Ingresos), 8 (Saldos Intermediarios) y 9 (Costos de Producción / Gastos por Función)."
       }
-    });
+    ];
 
-    function clearPDF() {
-      loadedPDF = null;
-      fileInput.value = '';
-      document.getElementById('file-pill').classList.remove('show');
-      document.getElementById('btn-parse-pdf').style.display = 'none';
-      document.getElementById('sentinel-results').classList.remove('show');
-      document.getElementById('pdf-status').style.display = 'none';
+    function sendToFinancito() {
+      const input = document.getElementById('chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      appendMessage(text, 'user');
+      input.value = '';
+
+      setTimeout(() => {
+        const query = text.toLowerCase();
+        let found = knowledgeBase.find(item => item.keys.some(k => query.includes(k)));
+        
+        let response = found ? found.answer : "🤖 No encontré una referencia exacta para esa consulta específica, pero puedo orientarte en <strong>NIIF 16, NIIF 15, NIIF 9, NIC 2, NIC 16, PCGE o ratios financieros</strong>. Prueba haciendo clic en las sugerencias de abajo.";
+        appendMessage(response, 'bot');
+      }, 400);
     }
 
-    async function processSentinelPDF() {
-      if (!loadedPDF) return;
-      const status = document.getElementById('pdf-status');
-      status.style.display = 'block';
-      status.innerText = "Extrayendo texto y analizando líneas de crédito...";
-
-      try {
-        const arrayBuffer = await loadedPDF.arrayBuffer();
-        const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-        let fullText = "";
-
-        for (let i = 1; i <= Math.min(pdf.numPages, 10); i++) {
-          const page = await pdf.getPage(i);
-          const textContent = await page.getTextContent();
-          fullText += textContent.items.map(s => s.str).join(" ") + " ";
-        }
-
-        renderSentinelAnalysis(fullText);
-        status.style.display = 'none';
-      } catch (err) {
-        status.innerText = "Lectura completada con el motor básico.";
-        renderSentinelAnalysis("SENTINEL REPORTE PROCESADO");
-      }
+    function askPreset(txt) {
+      document.getElementById('chat-input').value = txt;
+      sendToFinancito();
     }
 
-    function renderSentinelAnalysis(text) {
-      document.getElementById('sentinel-results').classList.add('show');
-      const tableBody = document.getElementById('res-table-body');
-      tableBody.innerHTML = '';
+    function appendMessage(text, sender) {
+      const box = document.getElementById('chat-messages');
+      const div = document.createElement('div');
+      div.className = `chat-bubble ${sender === 'user' ? 'bubble-user' : 'bubble-bot'}`;
+      div.innerHTML = text;
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
 
-      const rows = [
-        { c: 'Calificación Financiera', d: '100% Normal (Sin atrasos en SBS)', e: 'Óptimo' },
-        { c: 'Deuda Directa en el Sistema', d: 'Registros bajo control en entidades financieras', e: 'Al Día' },
-        { c: 'Consultas al Historial', d: 'Evaluación crediticia regular', e: 'Bajo Riesgo' }
-      ];
+    // LÓGICA ACORDEÓN Y BUSCADOR BIBLIOTECA
+    function toggleAccordion(el) {
+      const body = el.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+      document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('open'));
+      if (!isOpen) body.classList.add('open');
+    }
 
-      rows.forEach(r => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td><strong>${r.c}</strong></td><td>${r.d}</td><td style="color:var(--emerald); font-weight:600;">${r.e}</td>`;
-        tableBody.appendChild(tr);
+    function filterLibrary() {
+      const term = document.getElementById('search-niif').value.toLowerCase();
+      document.querySelectorAll('.accordion-item').forEach(item => {
+        const norm = item.getAttribute('data-norm').toLowerCase();
+        item.style.display = norm.includes(term) ? 'block' : 'none';
       });
     }
 
-    // LÓGICA CALCULADORA INTERÉS COMPUESTO
-    let compChart = null;
+    // LÓGICA PROYECTO: SCORE CREDITICIO
+    function calcCreditScore() {
+      const income = parseFloat(document.getElementById('sc-income').value) || 1;
+      const debt = parseFloat(document.getElementById('sc-debt-pmt').value) || 0;
+      const hist = parseFloat(document.getElementById('sc-history').value) || 100;
+      const util = parseFloat(document.getElementById('sc-utilization').value) || 0;
 
+      const dti = (debt / income) * 100;
+      let score = Math.round(hist * 7.5 + (100 - util) * 1.5 + Math.max(0, (40 - dti) * 2.5));
+      score = Math.min(999, Math.max(250, score));
+
+      document.getElementById('sc-score-val').innerText = score + ' / 1000';
+      document.getElementById('sc-dti-val').innerText = dti.toFixed(1) + '%';
+
+      const badge = document.getElementById('sc-badge');
+      const op = document.getElementById('sc-opinion');
+
+      if (dti <= 30 && score >= 750) {
+        badge.innerText = "RIESGO MUY BAJO (CALIFICACIÓN NORMAL 0)";
+        badge.style.background = "var(--emerald-soft)";
+        badge.style.color = "var(--emerald)";
+        op.innerText = "Excelente perfil. Califica para créditos corporativos e hipotecarios con las tasas de interés más competitivas del sistema financiero.";
+      } else if (dti <= 45 && score >= 600) {
+        badge.innerText = "RIESGO MODERADO (ALERTA PREVENTIVA)";
+        badge.style.background = "var(--amber-soft)";
+        badge.style.color = "var(--amber)";
+        op.innerText = "Capacidad crediticia regular. Se recomienda no aperturar nuevas líneas de crédito revolvente hasta reducir el saldo adeudado.";
+      } else {
+        badge.innerText = "RIESGO ALTO (SOBRE-ENDEUDAMIENTO)";
+        badge.style.background = "var(--rose-soft)";
+        badge.style.color = "var(--rose)";
+        op.innerText = "Carga financiera elevada. Requiere consolidación de deudas y reprogramación de pasivos para evitar reclasificación negativa en la SBS.";
+      }
+    }
+
+    // LÓGICA PROYECTO: INTERÉS COMPUESTO
+    let compChart = null;
     function calculateCompound() {
       const p = parseFloat(document.getElementById('ci-initial').value) || 0;
       const pmt = parseFloat(document.getElementById('ci-monthly').value) || 0;
@@ -901,7 +1211,10 @@
         dataTotal.push(Math.round(runningTotal));
       }
 
+      const netInterest = runningTotal - runningPrincipal;
       document.getElementById('ci-final-total').innerText = 'S/ ' + runningTotal.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('ci-interest-total').innerText = '+ S/ ' + netInterest.toLocaleString('es-PE', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
       return { labels, dataPrincipal, dataTotal };
     }
 
@@ -917,7 +1230,7 @@
           labels: calcData.labels,
           datasets: [
             {
-              label: 'Total Acumulado (Interés Compuesto)',
+              label: 'Total con Interés Compuesto',
               data: calcData.dataTotal,
               borderColor: '#2563eb',
               backgroundColor: 'rgba(37, 99, 235, 0.1)',
@@ -925,7 +1238,7 @@
               tension: 0.3
             },
             {
-              label: 'Capital Aportado',
+              label: 'Capital Aportado Acumulado',
               data: calcData.dataPrincipal,
               borderColor: '#94a3b8',
               borderDash: [5, 5],
@@ -939,7 +1252,7 @@
           plugins: { legend: { position: 'bottom' } },
           scales: {
             y: { grid: { color: '#f1f5f9' } },
-            x: { grid: false }
+            x: { grid: { display: false } }
           }
         }
       });
@@ -949,7 +1262,36 @@
       document.getElementById(id).addEventListener('input', updateCompoundChart);
     });
 
+    // LÓGICA PROYECTO: NIIF 16
+    function calcNIIF16() {
+      const c = parseFloat(document.getElementById('n16-cuota').value) || 0;
+      const n = parseInt(document.getElementById('n16-meses').value) || 1;
+      const tasaAnual = (parseFloat(document.getElementById('n16-tasa').value) || 0) / 100;
+      const r = Math.pow(1 + tasaAnual, 1/12) - 1;
+
+      let pv = 0;
+      for (let t = 1; t <= n; t++) {
+        pv += c / Math.pow(1 + r, t);
+      }
+      const totalPagado = c * n;
+      const interesTotal = totalPagado - pv;
+
+      document.getElementById('n16-pv').innerText = 'USD ' + pv.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      document.getElementById('n16-interes').innerText = 'USD ' + interesTotal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+      document.getElementById('n16-journal').innerText = 
+`---------------- ASIENTO DE APERTURA NIIF 16 (PCGE) ----------------
+32 ACTIVO POR DERECHO DE USO                     USD ${pv.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+   322 Edificaciones y contratos
+45 OBLIGACIONES FINANCIERAS                                     USD ${pv.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+   455 Costos de financiación por pagar (Arrendamiento)
+x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NIIF 16.`;
+    }
+
+    // Inicializaciones automáticas
+    calcCreditScore();
     calculateCompound();
+    calcNIIF16();
   </script>
 </body>
 </html>
