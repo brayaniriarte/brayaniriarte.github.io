@@ -10,6 +10,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Animaciones al hacer Scroll (AOS Library) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -42,6 +47,7 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
       line-height: 1.6;
       padding-bottom: 5rem;
+      overflow-x: hidden;
     }
 
     .container {
@@ -50,6 +56,7 @@
       padding: 0 1.5rem;
     }
 
+    /* Navbar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -87,8 +94,14 @@
       height: 7px;
       background: var(--emerald);
       border-radius: 50%;
+      animation: pulseAnim 2s infinite;
+    }
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.2); }
     }
 
+    /* Hero */
     .hero { margin-bottom: 3.5rem; }
 
     .hero-eyebrow {
@@ -132,16 +145,18 @@
       font-size: 0.88rem;
       font-weight: 600;
       text-decoration: none;
-      transition: all 0.15s ease;
+      transition: all 0.2s ease;
       cursor: pointer;
     }
+
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-primary {
       background: var(--primary);
       color: #ffffff;
       border: 1px solid var(--primary);
     }
-    .btn-primary:hover { background: #1e293b; }
+    .btn-primary:hover { background: #1e293b; box-shadow: 0 4px 12px rgba(15,23,42,0.15); }
 
     .btn-outline {
       background: var(--surface);
@@ -150,14 +165,17 @@
     }
     .btn-outline:hover { background: #f8fafc; border-color: #cbd5e1; }
 
+    /* Video Hero */
     .video-hero-wrapper {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 1.25rem;
       margin-bottom: 3.5rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      transition: transform 0.3s ease;
     }
+    .video-hero-wrapper:hover { transform: translateY(-3px); }
 
     .video-header {
       display: flex;
@@ -206,6 +224,7 @@
       border: 0;
     }
 
+    /* Métricas */
     .metrics-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
@@ -218,10 +237,13 @@
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.25rem;
+      transition: all 0.25s ease;
     }
+    .metric-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 16px rgba(37,99,235,0.06); }
     .metric-val { font-size: 1.75rem; font-weight: 800; color: var(--text-main); }
     .metric-lbl { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
 
+    /* Secciones Generales */
     section { margin-bottom: 3.5rem; }
     .section-title {
       font-size: 1.25rem;
@@ -235,6 +257,7 @@
       letter-spacing: -0.01em;
     }
 
+    /* Contenedor de Proyectos */
     .projects-container {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -279,6 +302,154 @@
     }
     .proj-content.active { display: block; }
 
+    /* Estructura FinancIto con Avatar Inteligente */
+    .financito-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    @media (max-width: 768px) { .financito-layout { grid-template-columns: 1fr; } }
+
+    .avatar-panel {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .bot-avatar-container {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #dbeafe, #eff6ff);
+      border: 3px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.75rem;
+      position: relative;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.15);
+    }
+
+    .bot-avatar-container.talking {
+      transform: scale(1.06);
+      border-color: var(--emerald);
+      box-shadow: 0 0 20px rgba(5, 150, 105, 0.35);
+      animation: botBounce 0.6s infinite alternate;
+    }
+
+    .bot-avatar-container.thinking {
+      border-color: var(--amber);
+      box-shadow: 0 0 16px rgba(217, 119, 6, 0.3);
+    }
+
+    @keyframes botBounce {
+      from { transform: translateY(0) scale(1.05); }
+      to { transform: translateY(-5px) scale(1.08); }
+    }
+
+    .bot-name { font-weight: 800; font-size: 1rem; color: var(--text-main); }
+    .bot-role { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; margin-top: 2px; }
+    
+    .bot-state-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
+      background: var(--tag-bg);
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .financito-chat-wrap {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #f8fafc;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 380px;
+    }
+
+    .financito-messages {
+      flex: 1;
+      padding: 1rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .chat-bubble {
+      max-width: 88%;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .bubble-bot {
+      align-self: flex-start;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .bubble-user {
+      align-self: flex-end;
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .financito-input-bar {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .financito-input-bar input {
+      flex: 1;
+      padding: 0.55rem 0.75rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 0.88rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .quick-chips {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    .chip-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .chip-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+    /* Formularios y Calculadoras */
     .calc-grid {
       display: grid;
       grid-template-columns: 320px 1fr;
@@ -396,83 +567,6 @@
       line-height: 1.5;
     }
 
-    .financito-chat-wrap {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      background: #f8fafc;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      height: 380px;
-    }
-
-    .financito-messages {
-      flex: 1;
-      padding: 1rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .chat-bubble {
-      max-width: 85%;
-      padding: 0.75rem 1rem;
-      border-radius: 12px;
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    .bubble-bot {
-      align-self: flex-start;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-    }
-
-    .bubble-user {
-      align-self: flex-end;
-      background: var(--primary);
-      color: #ffffff;
-    }
-
-    .financito-input-bar {
-      display: flex;
-      gap: 0.5rem;
-      padding: 0.75rem;
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
-
-    .financito-input-bar input {
-      flex: 1;
-      padding: 0.55rem 0.75rem;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      font-size: 0.88rem;
-      outline: none;
-      font-family: inherit;
-    }
-
-    .quick-chips {
-      display: flex;
-      gap: 0.4rem;
-      flex-wrap: wrap;
-      margin-top: 0.75rem;
-    }
-
-    .chip-btn {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 0.25rem 0.6rem;
-      border-radius: 9999px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .chip-btn:hover { border-color: var(--accent); color: var(--accent); }
-
     .accordion-item {
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -503,6 +597,7 @@
     }
     .accordion-body.open { display: block; }
 
+    /* Carrusel */
     .carousel-container {
       position: relative;
       width: 100%;
@@ -550,13 +645,16 @@
     }
     .dot.active { background: #ffffff; width: 20px; border-radius: 4px; }
 
+    /* Cards con animación */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 1.35rem;
       margin-bottom: 1rem;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.04); }
 
     .card-top {
       display: flex;
@@ -581,7 +679,9 @@
       font-size: 0.82rem;
       font-weight: 500;
       color: var(--text-main);
+      transition: all 0.2s ease;
     }
+    .tag:hover { background: #e2e8f0; transform: translateY(-1px); }
 
     footer {
       text-align: center;
@@ -596,7 +696,8 @@
 <body>
 
   <div class="container">
-    <nav>
+    <!-- Navbar -->
+    <nav data-aos="fade-down" data-aos-duration="600">
       <div class="nav-phrase">
         Información financiera precisa para <span class="highlight">decisiones de alto valor</span>
       </div>
@@ -606,15 +707,16 @@
       </div>
     </nav>
 
+    <!-- Hero -->
     <header class="hero">
-      <div class="hero-eyebrow">UNMSM • Ciencias Contables</div>
-      <h1>
+      <div class="hero-eyebrow" data-aos="fade-right" data-aos-delay="100">UNMSM • Ciencias Contables</div>
+      <h1 data-aos="fade-up" data-aos-delay="200">
         Información Financiera Precisa para Decisiones de Alto Valor.
       </h1>
-      <p>
+      <p data-aos="fade-up" data-aos-delay="300">
         Asistente Contable enfocado en normativa <strong>PCGE / NIIF</strong>, cálculo de <strong>NIIF 16</strong>, elaboración de papeles de trabajo y análisis de estados financieros. Egresado de la especialidad de <strong>Presupuesto y Finanzas</strong> de la UNMSM (Tercio Superior).
       </p>
-      <div class="hero-actions">
+      <div class="hero-actions" data-aos="fade-up" data-aos-delay="400">
         <a href="mailto:brayan.iriartep@gmail.com" class="btn btn-primary">
           <i data-lucide="mail"></i> Email
         </a>
@@ -629,7 +731,8 @@
         </span>
       </div>
 
-      <div class="video-hero-wrapper">
+      <!-- Video Hero -->
+      <div class="video-hero-wrapper" data-aos="zoom-in" data-aos-delay="500">
         <div class="video-header">
           <div class="video-header-title">
             <i data-lucide="play-circle" style="color: var(--accent);"></i>
@@ -650,27 +753,28 @@
       </div>
     </header>
 
+    <!-- Métricas -->
     <div class="metrics-grid">
-      <div class="metric-card">
+      <div class="metric-card" data-aos="fade-right" data-aos-delay="100">
         <div class="metric-val">Top 30</div>
         <div class="metric-lbl">Orden de Mérito y Tercio Superior (UNMSM)</div>
       </div>
-      <div class="metric-card">
+      <div class="metric-card" data-aos="fade-up" data-aos-delay="200">
         <div class="metric-val">0%</div>
         <div class="metric-lbl">Reprocesos en consolidación y NIIF 16</div>
       </div>
-      <div class="metric-card">
+      <div class="metric-card" data-aos="fade-up" data-aos-delay="300">
         <div class="metric-val">+200</div>
         <div class="metric-lbl">Asientos mensuales bajo marco PCGE</div>
       </div>
-      <div class="metric-card">
+      <div class="metric-card" data-aos="fade-left" data-aos-delay="400">
         <div class="metric-val">120 hrs</div>
         <div class="metric-lbl">Voluntariado Educativo CERSEU UNMSM</div>
       </div>
     </div>
 
     <!-- SECCIÓN PROYECTOS FINANCIEROS INTERACTIVOS -->
-    <section>
+    <section data-aos="fade-up" data-aos-duration="700">
       <h2 class="section-title"><i data-lucide="layout-grid" style="color: var(--accent);"></i> Proyectos Financieros Interactivos</h2>
       
       <div class="projects-container">
@@ -692,32 +796,64 @@
           </button>
         </div>
 
-        <!-- TAB 1: AGENTE FINANCITO -->
+        <!-- TAB 1: AGENTE FINANCITO CON AVATAR INTELIGENTE -->
         <div class="proj-content active" id="tab-financito">
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">
-            <strong>FinancIto</strong> es un asistente contable interactivo capacitado en el marco técnico de las <strong>Normas Internacionales de Contabilidad (NIC)</strong>, <strong>NIIF</strong> y su correspondencia con el <strong>PCGE</strong>.
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
+            <strong>FinancIto</strong> es un asistente contable interactivo con avatar reactivo, capacitado en el marco de las <strong>Normas Internacionales de Contabilidad (NIC)</strong>, <strong>NIIF</strong> y su correspondencia con el <strong>PCGE</strong>.
           </p>
 
-          <div class="financito-chat-wrap">
-            <div class="financito-messages" id="chat-messages">
-              <div class="chat-bubble bubble-bot">
-                👋 <strong>¡Hola! Soy FinancIto</strong>, tu asistente de consulta contable. Pregúntame sobre cualquier NIC, NIIF o asiento bajo PCGE (ej. <em>"¿Cómo se registra la NIIF 16?"</em>, <em>"¿Qué dice la NIC 2 de inventarios?"</em> o <em>"Diferencia entre NIC 16 y NIC 40"</em>).
+          <div class="financito-layout">
+            <!-- Panel Lateral del Avatar -->
+            <div class="avatar-panel">
+              <div class="bot-avatar-container" id="bot-avatar-box">
+                <!-- SVG Avatar reactivo de FinancIto -->
+                <svg id="bot-svg" width="65" height="65" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Cabeza / Monitor -->
+                  <rect x="15" y="20" width="70" height="55" rx="14" fill="#0f172a" stroke="#2563eb" stroke-width="4"/>
+                  <!-- Pantalla -->
+                  <rect x="23" y="28" width="54" height="39" rx="8" fill="#1e293b"/>
+                  <!-- Antena -->
+                  <line x1="50" y1="20" x2="50" y2="10" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/>
+                  <circle id="bot-antenna" cx="50" cy="8" r="5" fill="#06b6d4"/>
+                  <!-- Ojos -->
+                  <circle id="bot-eye-left" cx="38" cy="44" r="5" fill="#38bdf8"/>
+                  <circle id="bot-eye-right" cx="62" cy="44" r="5" fill="#38bdf8"/>
+                  <!-- Boca expresiva -->
+                  <path id="bot-mouth" d="M40 56 Q50 62 60 56" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" fill="none"/>
+                </svg>
+              </div>
+              <div class="bot-name">FinancIto</div>
+              <div class="bot-role">Consultor NIC & NIIF</div>
+              <div class="bot-state-pill" id="bot-status-pill">
+                <span style="width:6px; height:6px; border-radius:50%; background:var(--emerald);"></span>
+                En Línea
               </div>
             </div>
-            <div class="financito-input-bar">
-              <input type="text" id="chat-input" placeholder="Haz tu consulta contable a FinancIto..." onkeydown="if(event.key==='Enter') sendToFinancito()">
-              <button class="btn btn-primary" onclick="sendToFinancito()" style="padding:0.5rem 1rem;">
-                <i data-lucide="send" style="width:16px;"></i>
-              </button>
-            </div>
-          </div>
 
-          <div class="quick-chips">
-            <span style="font-size:0.78rem; font-weight:700; color:var(--text-muted);">Consultas frecuentes:</span>
-            <button class="chip-btn" onclick="askPreset('¿Cómo se calcula y registra la NIIF 16?')">NIIF 16 Arrendamientos</button>
-            <button class="chip-btn" onclick="askPreset('¿Qué criterios establece la NIC 2 para valuación de inventarios?')">NIC 2 Inventarios</button>
-            <button class="chip-btn" onclick="askPreset('¿Cuándo se reconoce un ingreso bajo NIIF 15?')">NIIF 15 Ingresos</button>
-            <button class="chip-btn" onclick="askPreset('¿Cuál es el tratamiento de la NIC 16 en Propiedad, Planta y Equipo?')">NIC 16 PPE</button>
+            <!-- Caja de Chat -->
+            <div>
+              <div class="financito-chat-wrap">
+                <div class="financito-messages" id="chat-messages">
+                  <div class="chat-bubble bubble-bot">
+                    👋 <strong>¡Hola! Soy FinancIto</strong>, tu asistente de consulta contable. Pregúntame sobre cualquier NIC, NIIF o asiento bajo PCGE (ej. <em>"¿Cómo se registra la NIIF 16?"</em>, <em>"¿Qué dice la NIC 2 de inventarios?"</em> o <em>"Diferencia entre NIC 16 y NIC 40"</em>).
+                  </div>
+                </div>
+                <div class="financito-input-bar">
+                  <input type="text" id="chat-input" placeholder="Escribe tu consulta para FinancIto..." onkeydown="if(event.key==='Enter') sendToFinancito()">
+                  <button class="btn btn-primary" onclick="sendToFinancito()" style="padding:0.5rem 1rem;">
+                    <i data-lucide="send" style="width:16px;"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="quick-chips">
+                <span style="font-size:0.78rem; font-weight:700; color:var(--text-muted);">Consultas rápidas:</span>
+                <button class="chip-btn" onclick="askPreset('¿Cómo se calcula y registra la NIIF 16?')">NIIF 16 Arrendamientos</button>
+                <button class="chip-btn" onclick="askPreset('¿Qué criterios establece la NIC 2 para valuación de inventarios?')">NIC 2 Inventarios</button>
+                <button class="chip-btn" onclick="askPreset('¿Cuándo se reconoce un ingreso bajo NIIF 15?')">NIIF 15 Ingresos</button>
+                <button class="chip-btn" onclick="askPreset('¿Cuál es el tratamiento de la NIC 16 en Propiedad, Planta y Equipo?')">NIC 16 PPE</button>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -796,7 +932,7 @@
         <!-- TAB 3: DIAGNÓSTICO CREDITICIO (CALCULADORA + SUBIDA PDF) -->
         <div class="proj-content" id="tab-sentinel">
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
-            Diagnóstico cuantitativo según parámetros de la SBS: puedes calcular tu riesgo ingresando tus variables o **subiendo tu reporte PDF de Sentinel/SBS** para un análisis automático.
+            Diagnóstico cuantitativo según parámetros de la SBS: evalúa el nivel de solvencia ingresando tus variables o **subiendo tu reporte PDF de Sentinel/SBS** para una extracción estructurada.
           </p>
 
           <div class="calc-grid">
@@ -979,9 +1115,9 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
 
     <!-- Experiencia Laboral -->
     <section>
-      <h2 class="section-title"><i data-lucide="briefcase" style="color: var(--text-main);"></i> Experiencia Profesional</h2>
+      <h2 class="section-title" data-aos="fade-right"><i data-lucide="briefcase" style="color: var(--text-main);"></i> Experiencia Profesional</h2>
       
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
         <div class="card-top">
           <div class="card-title">Docente de Herramientas Informáticas</div>
           <div class="card-date">Ago 2025 – Jul 2026</div>
@@ -992,7 +1128,7 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
         <div class="card-top">
           <div class="card-title">Auxiliar Contable</div>
           <div class="card-date">Mar 2026 – Jul 2026</div>
@@ -1004,7 +1140,7 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
         <div class="card-top">
           <div class="card-title">Asistente Contable</div>
           <div class="card-date">Dic 2023 – Mar 2024</div>
@@ -1016,7 +1152,7 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
         </ul>
       </div>
 
-      <div class="card">
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
         <div class="card-top">
           <div class="card-title">Asistente Administrativo</div>
           <div class="card-date">2023 – 2026</div>
@@ -1030,9 +1166,9 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
 
     <!-- Voluntariado -->
     <section>
-      <h2 class="section-title"><i data-lucide="heart-handshake" style="color: var(--accent);"></i> Voluntariado & Compromiso Social</h2>
+      <h2 class="section-title" data-aos="fade-right"><i data-lucide="heart-handshake" style="color: var(--accent);"></i> Voluntariado & Compromiso Social</h2>
       
-      <div class="card">
+      <div class="card" data-aos="zoom-in" data-aos-duration="600">
         <div class="card-top">
           <div class="card-title">Jefe de Carpa Presencial - Colecta Pública Nacional 2023</div>
           <div class="card-date">Setiembre 2023</div>
@@ -1062,8 +1198,8 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
 
     <!-- Formación Académica -->
     <section>
-      <h2 class="section-title"><i data-lucide="graduation-cap" style="color: var(--text-main);"></i> Formación Académica</h2>
-      <div class="card">
+      <h2 class="section-title" data-aos="fade-right"><i data-lucide="graduation-cap" style="color: var(--text-main);"></i> Formación Académica</h2>
+      <div class="card" data-aos="fade-up">
         <div class="card-top">
           <div class="card-title">Universidad Nacional Mayor de San Marcos (UNMSM)</div>
           <div class="card-date">2023 – Presente</div>
@@ -1077,8 +1213,8 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
 
     <!-- Competencias -->
     <section>
-      <h2 class="section-title"><i data-lucide="check-circle" style="color: var(--text-main);"></i> Competencias Técnicas</h2>
-      <div class="tags-wrap">
+      <h2 class="section-title" data-aos="fade-right"><i data-lucide="check-circle" style="color: var(--text-main);"></i> Competencias Técnicas</h2>
+      <div class="tags-wrap" data-aos="fade-up">
         <span class="tag">Marco PCGE & NIIF</span>
         <span class="tag">NIIF 16 (Arrendamientos)</span>
         <span class="tag">Análisis y Consolidación de EEFF</span>
@@ -1097,7 +1233,13 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
   </div>
 
   <script>
+    // Inicializar Iconos y Animaciones al Scroll
     lucide.createIcons();
+    AOS.init({
+      once: true,
+      duration: 700,
+      easing: 'ease-out-cubic'
+    });
 
     // Carrusel Automático
     let currentSlide = 0;
@@ -1130,7 +1272,35 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
       if (tabId === 'tab-compound') updateCompoundChart();
     }
 
-    // LÓGICA AGENTE FINANCITO
+    // CONTROL DEL AVATAR REACTIVO DE FINANCITO
+    function setBotState(state) {
+      const box = document.getElementById('bot-avatar-box');
+      const pill = document.getElementById('bot-status-pill');
+      const mouth = document.getElementById('bot-mouth');
+      const eyeL = document.getElementById('bot-eye-left');
+      const eyeR = document.getElementById('bot-eye-right');
+      const antenna = document.getElementById('bot-antenna');
+
+      box.classList.remove('talking', 'thinking');
+
+      if (state === 'thinking') {
+        box.classList.add('thinking');
+        pill.innerHTML = '<span style="width:6px; height:6px; border-radius:50%; background:var(--amber);"></span> Analizando NIIF...';
+        antenna.setAttribute('fill', '#f59e0b');
+        mouth.setAttribute('d', 'M42 58 L58 58'); // Línea recta seria
+      } else if (state === 'talking') {
+        box.classList.add('talking');
+        pill.innerHTML = '<span style="width:6px; height:6px; border-radius:50%; background:var(--emerald);"></span> Explicando...';
+        antenna.setAttribute('fill', '#10b981');
+        mouth.setAttribute('d', 'M40 54 Q50 66 60 54'); // Boca sonriente hablando
+      } else {
+        pill.innerHTML = '<span style="width:6px; height:6px; border-radius:50%; background:var(--emerald);"></span> En Línea';
+        antenna.setAttribute('fill', '#06b6d4');
+        mouth.setAttribute('d', 'M40 56 Q50 62 60 56'); // Sonrisa calmada
+      }
+    }
+
+    // LÓGICA DE FINANCITO
     const knowledgeBase = [
       {
         keys: ['niif 16', 'arrendamiento', 'arrendamientos', 'derecho de uso'],
@@ -1165,14 +1335,21 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
 
       appendMessage(text, 'user');
       input.value = '';
+      setBotState('thinking');
 
       setTimeout(() => {
         const query = text.toLowerCase();
         let found = knowledgeBase.find(item => item.keys.some(k => query.includes(k)));
         
         let response = found ? found.answer : "🤖 No encontré una referencia exacta para esa consulta específica, pero puedo orientarte en <strong>NIIF 16, NIIF 15, NIIF 9, NIC 2, NIC 16, PCGE o ratios financieros</strong>. Prueba haciendo clic en las sugerencias de abajo.";
+        
         appendMessage(response, 'bot');
-      }, 400);
+        setBotState('talking');
+
+        setTimeout(() => {
+          setBotState('idle');
+        }, 2200);
+      }, 500);
     }
 
     function askPreset(txt) {
@@ -1204,7 +1381,7 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
       });
     }
 
-    // LÓGICA PROYECTO: SCORE CREDITICIO SBS / SENTINEL
+    // SCORE CREDITICIO SBS / SENTINEL
     function calcCreditScore() {
       const income = parseFloat(document.getElementById('sc-income').value) || 1;
       const debt = parseFloat(document.getElementById('sc-debt-pmt').value) || 0;
@@ -1239,7 +1416,7 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
       }
     }
 
-    // LÓGICA SUBIDA Y PARSING PDF
+    // PDF SUBIDA Y PARSING
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
     let loadedPDF = null;
 
@@ -1305,7 +1482,7 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
       });
     }
 
-    // LÓGICA PROYECTO: INTERÉS COMPUESTO
+    // INTERÉS COMPUESTO
     let compChart = null;
     function calculateCompound() {
       const p = parseFloat(document.getElementById('ci-initial').value) || 0;
@@ -1382,7 +1559,7 @@ x/x Por el reconocimiento inicial del derecho de uso y pasivo financiero bajo NI
       document.getElementById(id).addEventListener('input', updateCompoundChart);
     });
 
-    // LÓGICA PROYECTO: NIIF 16
+    // NIIF 16
     function calcNIIF16() {
       const c = parseFloat(document.getElementById('n16-cuota').value) || 0;
       const n = parseInt(document.getElementById('n16-meses').value) || 1;
