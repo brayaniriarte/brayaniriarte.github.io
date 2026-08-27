@@ -50,7 +50,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1.25rem 0;
-      margin-bottom: 3.5rem;
+      margin-bottom: 3rem;
       border-bottom: 1px solid var(--border);
     }
 
@@ -115,15 +115,16 @@
       display: flex;
       gap: 0.75rem;
       flex-wrap: wrap;
+      margin-bottom: 2.5rem;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.6rem 1.25rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 8px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       text-decoration: none;
       transition: all 0.15s ease;
@@ -144,6 +145,63 @@
     }
     .btn-outline:hover { background: #f8fafc; border-color: #cbd5e1; }
 
+    /* Video Hero Embed */
+    .video-hero-wrapper {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.25rem;
+      margin-bottom: 3.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+    }
+
+    .video-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .video-header-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .video-yt-link {
+      font-size: 0.82rem;
+      color: #dc2626;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .video-yt-link:hover { text-decoration: underline; }
+
+    .video-frame-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-frame-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* Métricas */
     .metrics-grid {
       display: grid;
@@ -161,7 +219,7 @@
     .metric-val { font-size: 1.75rem; font-weight: 800; color: var(--text-main); }
     .metric-lbl { font-size: 0.82rem; color: var(--text-muted); margin-top: 0.2rem; }
 
-    /* Proyectos / Apps */
+    /* Proyectos */
     section { margin-bottom: 3.5rem; }
     .section-title {
       font-size: 1.25rem;
@@ -216,7 +274,6 @@
     }
     .proj-content.active { display: block; }
 
-    /* Estilos Sentinel */
     .upload-box {
       border: 2px dashed #cbd5e1;
       border-radius: 10px;
@@ -270,7 +327,6 @@
     }
     .data-table th { color: var(--text-muted); font-weight: 600; background: #f8fafc; }
 
-    /* Estilos Interés Compuesto */
     .calc-grid {
       display: grid;
       grid-template-columns: 280px 1fr;
@@ -278,9 +334,7 @@
     }
     @media (max-width: 720px) { .calc-grid { grid-template-columns: 1fr; } }
 
-    .input-field {
-      margin-bottom: 1rem;
-    }
+    .input-field { margin-bottom: 1rem; }
     .input-field label {
       display: block;
       font-size: 0.82rem;
@@ -308,7 +362,69 @@
     }
     .calc-total { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
 
-    /* Experiencia Cards */
+    /* Carrusel de Voluntariado */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 650px;
+      height: 480px;
+      margin: 1.5rem auto 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #0f172a;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #0f172a;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .dot.active {
+      background: #ffffff;
+      width: 20px;
+      border-radius: 4px;
+    }
+
+    /* Cards */
     .card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -373,14 +489,38 @@
       </p>
       <div class="hero-actions">
         <a href="mailto:brayan.iriartep@gmail.com" class="btn btn-primary">
-          <i data-lucide="mail"></i> Contactar Vía Email
+          <i data-lucide="mail"></i> Email
         </a>
         <a href="https://www.linkedin.com/in/brayan-melvin-iriarte-peralta-099738284/" target="_blank" class="btn btn-outline">
-          <i data-lucide="linkedin"></i> Perfil de LinkedIn
+          <i data-lucide="linkedin"></i> LinkedIn
+        </a>
+        <a href="https://www.facebook.com/brayan.iriartep" target="_blank" class="btn btn-outline">
+          <i data-lucide="facebook"></i> Facebook
         </a>
         <span class="btn btn-outline">
           <i data-lucide="map-pin"></i> Lima, Perú
         </span>
+      </div>
+
+      <!-- VIDEO HERO DESTACADO -->
+      <div class="video-hero-wrapper">
+        <div class="video-header">
+          <div class="video-header-title">
+            <i data-lucide="play-circle" style="color: var(--accent);"></i>
+            Entrevista Académica sobre Liderazgo y Gestión Institucional (UNMSM)
+          </div>
+          <a href="https://www.youtube.com/watch?v=S7oyvksHUmg&t=3s" target="_blank" class="video-yt-link">
+            <i data-lucide="external-link" style="width: 14px;"></i> Ver en YouTube
+          </a>
+        </div>
+        <div class="video-frame-container">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/S7oyvksHUmg?start=3" 
+            title="Investigación Cualitativa - Entrevista UNMSM" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
     </header>
 
@@ -555,6 +695,39 @@
       </div>
     </section>
 
+    <!-- Voluntariado & Liderazgo con Carrusel Automático -->
+    <section>
+      <h2 class="section-title"><i data-lucide="heart-handshake" style="color: var(--accent);"></i> Voluntariado & Compromiso Social</h2>
+      
+      <div class="card">
+        <div class="card-top">
+          <div class="card-title">Jefe de Carpa Presencial - Colecta Pública Nacional 2023[cite: 1, 2]</div>
+          <div class="card-date">Setiembre 2023[cite: 1, 2]</div>
+        </div>
+        <div class="card-comp">Liga Contra el Cáncer[cite: 1, 2]</div>
+        <ul class="card-list">
+          <li>Liderazgo y coordinación de equipo de voluntarios en puntos de recaudación presencial y campañas de sensibilización ciudadana[cite: 1, 2].</li>
+        </ul>
+
+        <!-- Carrusel Deslizante -->
+        <div class="carousel-container" id="voluntariado-carousel">
+          <div class="carousel-slide active"><img src="voluntariado1.jpg" alt="Liga Contra el Cáncer - Voluntariado"></div>
+          <div class="carousel-slide"><img src="voluntariado2.jpg" alt="Liga Contra el Cáncer - Campaña"></div>
+          <div class="carousel-slide"><img src="voluntariado3.jpg" alt="Liga Contra el Cáncer - Embajador"></div>
+          <div class="carousel-slide"><img src="voluntariado4.jpg" alt="Liga Contra el Cáncer - Equipo"></div>
+          <div class="carousel-slide"><img src="voluntariado5.jpg" alt="Liga Contra el Cáncer - Gran Colecta"></div>
+          
+          <div class="carousel-dots" id="carousel-dots">
+            <span class="dot active" onclick="setSlide(0)"></span>
+            <span class="dot" onclick="setSlide(1)"></span>
+            <span class="dot" onclick="setSlide(2)"></span>
+            <span class="dot" onclick="setSlide(3)"></span>
+            <span class="dot" onclick="setSlide(4)"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Educación -->
     <section>
       <h2 class="section-title"><i data-lucide="graduation-cap" style="color: var(--text-main);"></i> Formación Académica</h2>
@@ -593,6 +766,35 @@
 
   <script>
     lucide.createIcons();
+
+    // Carrusel Automático de Voluntariado
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === index);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function setSlide(index) {
+      showSlide(index);
+      clearInterval(slideInterval);
+      slideInterval = setInterval(nextSlide, 3500);
+    }
+
+    let slideInterval = setInterval(nextSlide, 3500);
 
     // Tabs de Proyectos
     function switchTab(tabId) {
@@ -734,7 +936,7 @@
           plugins: { legend: { position: 'bottom' } },
           scales: {
             y: { grid: { color: '#f1f5f9' } },
-            x: { grid: { display: false } }
+            x: { grid: false }
           }
         }
       });
