@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brayan Melvin Iriarte Peralta | Consultoría Contable & Finanzas</title>
   
+  <!-- Icono de la pestaña (Favicon) -->
+  <link rel="icon" type="image/png" href="brayanicono.png">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,7 +47,7 @@
       padding: 0 1.5rem;
     }
 
-    /* Navbar Minimalista */
+    /* Navbar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -52,14 +55,18 @@
       padding: 1.25rem 0;
       margin-bottom: 3rem;
       border-bottom: 1px solid var(--border);
+      gap: 1rem;
     }
 
-    .brand {
+    .nav-phrase {
       font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: -0.02em;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
     }
-    .brand span { color: var(--accent); }
+    .nav-phrase .highlight {
+      color: var(--accent);
+    }
 
     .status-badge {
       display: inline-flex;
@@ -72,6 +79,7 @@
       border-radius: 9999px;
       font-size: 0.8rem;
       font-weight: 600;
+      white-space: nowrap;
     }
 
     .pulse-dot {
@@ -145,7 +153,7 @@
     }
     .btn-outline:hover { background: #f8fafc; border-color: #cbd5e1; }
 
-    /* Video Hero Embed */
+    /* Video Hero */
     .video-hero-wrapper {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -186,7 +194,7 @@
     .video-frame-container {
       position: relative;
       width: 100%;
-      padding-bottom: 56.25%; /* 16:9 */
+      padding-bottom: 56.25%;
       height: 0;
       border-radius: 10px;
       overflow: hidden;
@@ -362,7 +370,7 @@
     }
     .calc-total { font-size: 1.6rem; font-weight: 800; color: var(--accent); }
 
-    /* Carrusel de Voluntariado */
+    /* Carrusel */
     .carousel-container {
       position: relative;
       width: 100%;
@@ -389,9 +397,7 @@
       justify-content: center;
     }
 
-    .carousel-slide.active {
-      opacity: 1;
-    }
+    .carousel-slide.active { opacity: 1; }
 
     .carousel-slide img {
       width: 100%;
@@ -472,7 +478,9 @@
 
   <div class="container">
     <nav>
-      <div class="brand">brayan<span>iriarte.io</span></div>
+      <div class="nav-phrase">
+        Información financiera precisa para <span class="highlight">decisiones de alto valor</span>
+      </div>
       <div class="status-badge">
         <span class="pulse-dot"></span>
         Disponible para Proyectos / Finanzas
@@ -485,7 +493,7 @@
         Información Financiera Precisa para Decisiones de Alto Valor.
       </h1>
       <p>
-        Asistente Contable enfocado en normativa <strong>PCGE / NIIF</strong>, cálculo de <strong>NIIF 16</strong>, elaboración de papeles de trabajo y análisis de estados financieros[cite: 1, 2]. Egresado de la especialidad de <strong>Presupuesto y Finanzas</strong> de la UNMSM (Tercio Superior)[cite: 1, 2].
+        Asistente Contable enfocado en normativa <strong>PCGE / NIIF</strong>, cálculo de <strong>NIIF 16</strong>, elaboración de papeles de trabajo y análisis de estados financieros. Egresado de la especialidad de <strong>Presupuesto y Finanzas</strong> de la UNMSM (Tercio Superior)[cite: 1, 2].
       </p>
       <div class="hero-actions">
         <a href="mailto:brayan.iriartep@gmail.com" class="btn btn-primary">
@@ -502,7 +510,7 @@
         </span>
       </div>
 
-      <!-- VIDEO HERO DESTACADO -->
+      <!-- VIDEO HERO -->
       <div class="video-hero-wrapper">
         <div class="video-header">
           <div class="video-header-title">
@@ -543,7 +551,7 @@
       </div>
     </div>
 
-    <!-- SECCIÓN PROYECTOS FINANCIEROS -->
+    <!-- PROYECTOS FINANCIEROS -->
     <section>
       <h2 class="section-title"><i data-lucide="layout-grid" style="color: var(--accent);"></i> Proyectos Financieros Interactivos</h2>
       
@@ -557,7 +565,7 @@
           </button>
         </div>
 
-        <!-- TAB 1: ANALIZADOR SENTINEL -->
+        <!-- TAB 1: SENTINEL -->
         <div class="proj-content active" id="tab-sentinel">
           <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.25rem;">
             Procesamiento directo en tu navegador: extrae el score, entidades crediticias y comportamiento financiero del reporte PDF sin enviar datos a servidores externos.
@@ -609,7 +617,7 @@
           </div>
         </div>
 
-        <!-- TAB 2: INTERÉS COMPUESTO CON GRÁFICA -->
+        <!-- TAB 2: INTERÉS COMPUESTO -->
         <div class="proj-content" id="tab-compound">
           <div class="calc-grid">
             <div>
@@ -695,7 +703,7 @@
       </div>
     </section>
 
-    <!-- Voluntariado & Liderazgo con Carrusel Automático -->
+    <!-- Voluntariado -->
     <section>
       <h2 class="section-title"><i data-lucide="heart-handshake" style="color: var(--accent);"></i> Voluntariado & Compromiso Social</h2>
       
@@ -709,7 +717,6 @@
           <li>Liderazgo y coordinación de equipo de voluntarios en puntos de recaudación presencial y campañas de sensibilización ciudadana[cite: 1, 2].</li>
         </ul>
 
-        <!-- Carrusel Deslizante -->
         <div class="carousel-container" id="voluntariado-carousel">
           <div class="carousel-slide active"><img src="voluntariado1.jpg" alt="Liga Contra el Cáncer - Voluntariado"></div>
           <div class="carousel-slide"><img src="voluntariado2.jpg" alt="Liga Contra el Cáncer - Campaña"></div>
@@ -728,7 +735,7 @@
       </div>
     </section>
 
-    <!-- Educación -->
+    <!-- Formación Académica -->
     <section>
       <h2 class="section-title"><i data-lucide="graduation-cap" style="color: var(--text-main);"></i> Formación Académica</h2>
       <div class="card">
@@ -767,19 +774,15 @@
   <script>
     lucide.createIcons();
 
-    // Carrusel Automático de Voluntariado
+    // Carrusel Automático
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.dot');
     const totalSlides = slides.length;
 
     function showSlide(index) {
-      slides.forEach((s, i) => {
-        s.classList.toggle('active', i === index);
-      });
-      dots.forEach((d, i) => {
-        d.classList.toggle('active', i === index);
-      });
+      slides.forEach((s, i) => s.classList.toggle('active', i === index));
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
       currentSlide = index;
     }
 
